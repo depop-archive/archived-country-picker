@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CountryPicker</string>
+    <string name="country">Country</string>
+    <string name="dialog_title_country">Select country</string>
+</resources>
