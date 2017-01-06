@@ -7,13 +7,13 @@ import android.support.v7.app.AppCompatDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-public class CountryPickerDialog extends AppCompatDialog implements ClickViewHolder.OnItemClickListener {
+class CountryPickerDialog extends AppCompatDialog implements ClickViewHolder.OnItemClickListener {
 
     private Country mSelectedCountry;
     private CountryAdapter mCountryAdapter;
     private OnCountrySelectedListener mListener;
 
-    public CountryPickerDialog(final Context context, final Country selectedCountry, final OnCountrySelectedListener listener) {
+    CountryPickerDialog(final Context context, final Country selectedCountry, final OnCountrySelectedListener listener) {
         super(context);
         mSelectedCountry = selectedCountry;
         mListener = listener;
@@ -30,6 +30,12 @@ public class CountryPickerDialog extends AppCompatDialog implements ClickViewHol
     }
 
     @Override
+    public void onDetachedFromWindow() {
+        mCountryAdapter.stopLoadDrawables();
+        super.onDetachedFromWindow();
+    }
+
+    @Override
     public void onItemClick(final View view, final int position) {
         final Country country = mCountryAdapter.getCountryAtPosition(position);
         if (mSelectedCountry != country) {
@@ -38,7 +44,7 @@ public class CountryPickerDialog extends AppCompatDialog implements ClickViewHol
         dismiss();
     }
 
-    public interface OnCountrySelectedListener {
+    interface OnCountrySelectedListener {
         void onCountrySelected(final Country country);
 
     }

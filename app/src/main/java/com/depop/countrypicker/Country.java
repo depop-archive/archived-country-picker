@@ -9,7 +9,7 @@ import java.util.Locale;
 
 import static com.depop.countrypicker.EmojiUtils.getRegionalIndicatorSymbol;
 
-public enum Country {
+enum Country {
     /* FR, NL and US are specified first because their flags are also used for other countries */
     FR(R.drawable.ic_fr),
     NL(R.drawable.ic_nl),
@@ -90,6 +90,7 @@ public enum Country {
     GA(R.drawable.ic_ga),
     GB(R.drawable.ic_gb),
     GD(R.drawable.ic_gd),
+    GE(R.drawable.ic_ge),
     GF(R.drawable.ic_gf),
     GG(R.drawable.ic_gg),
     GH(R.drawable.ic_gh),
@@ -116,6 +117,7 @@ public enum Country {
     IM(R.drawable.ic_im),
     IN(R.drawable.ic_in),
     IO(R.drawable.ic_io),
+    IQ(R.drawable.ic_iq),
     IR(R.drawable.ic_ir),
     IS(R.drawable.ic_is),
     IT(R.drawable.ic_it),
@@ -272,8 +274,8 @@ public enum Country {
         return AppCompatResources.getDrawable(context, mCountryFlag);
     }
 
-    public String getCountryName(final String language) {
-        return new Locale(language, name()).getDisplayCountry();
+    public String getCountryName() {
+        return new Locale(Locale.getDefault().getLanguage(), name()).getDisplayCountry();
     }
 
     public String getEmojiFlag() {
